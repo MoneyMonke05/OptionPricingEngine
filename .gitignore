@@ -1,0 +1,15 @@
+.venv/
+venv/ # Include this just in case your virtual env is named 'venv'
+
+# PyCharm project files
+.idea/
+
+# Other common Python build/cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
