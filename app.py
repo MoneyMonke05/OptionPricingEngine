@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from scipy.stats import norm
+import scipy.stats # Changed from 'from scipy.stats import norm'
 
 # --- Black-Scholes Option Pricing Model ---
 def black_scholes(S, K, T, r, sigma, option_type='call'):
@@ -24,10 +24,12 @@ def black_scholes(S, K, T, r, sigma, option_type='call'):
 
     if option_type == 'call':
         # Call option price
-        price = S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
+        # Changed norm.cdf to scipy.stats.norm.cdf
+        price = S * scipy.stats.norm.cdf(d1) - K * np.exp(-r * T) * scipy.stats.norm.cdf(d2)
     elif option_type == 'put':
         # Put option price
-        price = K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+        # Changed norm.cdf to scipy.stats.norm.cdf
+        price = K * np.exp(-r * T) * scipy.stats.norm.cdf(-d2) - S * scipy.stats.norm.cdf(-d1)
     else:
         raise ValueError("option_type must be 'call' or 'put'")
 
